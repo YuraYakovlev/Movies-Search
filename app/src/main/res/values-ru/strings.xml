@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Поиск Фильмов</string>
+    <string name="new_movies">Новые Фильмы</string>
+</resources>
