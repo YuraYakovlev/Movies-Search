@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_movie"
-    android:clickable="true"
-    android:focusable="true"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
             android:id="@+id/movies_image"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
             android:src="@drawable/avengers" />
 
         <TextView
+            android:id="@+id/movies_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/movies_name"
-            android:hint="Movies Name"/>
+            android:hint="Movies Name" />
 
 
     </LinearLayout>
-
 
 
 </androidx.cardview.widget.CardView>

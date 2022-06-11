@@ -1,6 +1,6 @@
 package com.example.moviessearch.ui.main.model
 
 interface Repository {
-    fun getLocalFromStorage() : Movies
-    fun getServerFromStorage() : Movies
+    fun getLocalFromStorage() : List<MovieReview>
+    fun getServerFromStorage() : MovieReview
 }

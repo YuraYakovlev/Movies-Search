@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.moviessearch.R
 import com.example.moviessearch.databinding.MainFragmentBinding
+import com.example.moviessearch.ui.main.model.MovieReview
 import com.example.moviessearch.ui.main.viewmodel.AppState
 import com.example.moviessearch.ui.main.viewmodel.MainViewModel
-import com.example.moviessearch.ui.main.model.Movies
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,8 +18,8 @@ class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModel()
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: RecyclerAdapter
-    private lateinit var listMovies: MutableList<Movies>
+    private var adapter: RecyclerAdapter? = null
+
 
     companion object {
         fun newInstance() = MainFragment()
@@ -29,21 +30,18 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
-        listMovies = mutableListOf()
-
-        adapter = RecyclerAdapter(listMovies)
-        binding.moviesRecyclerView.adapter = adapter
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            binding.moviesRecyclerView.adapter = adapter
 
-        val observer = Observer<AppState> { renderData(it) }
-        viewModel.liveData.observe(viewLifecycleOwner, observer)
-        viewModel.getMovie()
-
+            val observer = Observer<AppState> { renderData(it) }
+            viewModel.liveData.observe(viewLifecycleOwner, observer)
+            viewModel.getMovie()
+        }
     }
 
     private fun renderData(appState: AppState) = with(binding) {
@@ -55,9 +53,22 @@ class MainFragment : Fragment() {
             is AppState.Success -> {
                 viewProgressBar.visibility = View.GONE
                 viewGroup.visibility = View.VISIBLE
-                listMovies.add(Movies())
-                updateAdapter()
+                adapter = RecyclerAdapter(object : SetClick {
+                    override fun onItemSetClick(movieReview: MovieReview) {
+                        val manager = activity?.supportFragmentManager
+                        manager.let { manager ->
+                            val bundle = Bundle().apply {
+                                putParcelable(DetailsFragment.BUNDLE_EXTRA, movieReview)
+                            }
+                            manager?.beginTransaction()
+                                ?.add(R.id.container, DetailsFragment.newInstance(bundle))
+                                ?.addToBackStack("")
+                                ?.commitAllowingStateLoss()
+                        }
+                    }
+                }).apply { setMoviesReview(appState.moviesData) }
             }
+
             is AppState.MyError -> {
                 viewProgressBar.visibility = View.GONE
                 viewGroup.visibility = View.GONE
@@ -68,8 +79,12 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun updateAdapter(){
-        adapter.notifyDataSetChanged()
+//    private fun updateAdapter(){
+//        adapter.notifyDataSetChanged()
+//    }
+
+    interface SetClick {
+        fun onItemSetClick(movieReview: MovieReview)
     }
 
     override fun onDestroy() {

@@ -1,8 +1,11 @@
 package com.example.moviessearch.ui.main.model
 
+import android.os.Parcelable
 import com.example.moviessearch.R
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Movies(
-     val title:String = "Avengers",
-     val poster: Int = R.id.movies_image
-)
+     val title:String,
+     val poster: Int
+) : Parcelable

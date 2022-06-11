@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/details_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/df_movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Movie name" />
+
+    <ImageView
+        android:id="@+id/dp_movie_poster"
+        android:layout_width="180dp"
+        android:layout_height="300dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:background="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/df_movie_name" />
+
+    <TextView
+        android:id="@+id/df_movie_director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_goneMarginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/dp_movie_poster"
+        app:layout_constraintTop_toBottomOf="@id/df_movie_name"
+        android:text="@string/director" />
+
+    <TextView
+        android:id="@+id/df_movie_director_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/df_movie_director"
+        app:layout_constraintStart_toEndOf="@id/df_movie_director"
+        tools:text="@tools:sample/lorem" />
+
+    <TextView
+        android:id="@+id/df_movie_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_goneMarginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/dp_movie_poster"
+        app:layout_constraintTop_toBottomOf="@id/df_movie_director"
+        android:text="@string/genre" />
+
+    <TextView
+        android:id="@+id/df_movie_genre_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/df_movie_genre"
+        app:layout_constraintStart_toEndOf="@id/df_movie_genre"
+        tools:text="боевик" />
+
+    <TextView
+        android:id="@+id/df_movie_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_goneMarginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/dp_movie_poster"
+        app:layout_constraintTop_toBottomOf="@id/df_movie_genre"
+        android:text="@string/duration" />
+
+    <TextView
+        android:id="@+id/df_movie_duration_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        app:layout_constraintStart_toEndOf="@id/df_movie_duration"
+        app:layout_constraintBaseline_toBaselineOf="@id/df_movie_duration"
+        tools:text="120 min" />
+
+    <TextView
+        android:id="@+id/df_movie_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_goneMarginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/dp_movie_poster"
+        app:layout_constraintTop_toBottomOf="@id/df_movie_duration"
+        android:text="@string/rating" />
+
+    <TextView
+        android:id="@+id/df_movie_rating_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/df_movie_rating"
+        app:layout_constraintStart_toEndOf="@id/df_movie_rating"
+        tools:text="8,5" />
+
+    <TextView
+        android:id="@+id/df_movie_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:ems="23"
+        android:lines="5"
+        android:maxLines="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dp_movie_poster"
+        tools:text="@tools:sample/lorem/random" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

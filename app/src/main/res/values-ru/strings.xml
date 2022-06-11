@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">Поиск Фильмов</string>
     <string name="new_movies">Новые Фильмы</string>
+    <string name="director">Режиссёр:</string>
+    <string name="genre">Жанр:</string>
+    <string name="duration">Продолжительность:</string>
+    <string name="rating">Рейтинг:</string>
 </resources>
